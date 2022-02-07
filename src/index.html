@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Movies App | TOP rated movies</title>
+
+  <link rel="shortcut icon" href="/assets/favicon.ico"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
+</head>
+
+<body>
+  <div class="wrapper position-relative vh-100 min-vh-100">
+    <div id="progress" class="progress-bar d-none position-absolute progress-bar-striped progress-bar-animated w-100" style="height: 10px"></div>
+    <aside class="sidebar vh-100 elevation-4">
+        <div class="position-relative mt-3 pb-3 mb-3 d-flex justify-content-center">
+          <a href="/" class="d-block">
+            <img src="/assets/logo.svg">
+            <span class="d-inline">Movies App</span>
+          </a>
+        </div>
+
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+          <ul class="nav nav-sidebar flex-column">
+            <li class="nav-item">
+              <a href="/" class="nav-link active">
+                <i class="nav-icon fas fa-th"></i>
+                <span>
+                  TOP 100 rated movies
+                </span>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a href="/all-movies" class="nav-link">
+                <i class="nav-icon fas fa-list"></i>
+                <span>
+                  All movies
+                </span>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a href="/my-collection" class="nav-link">
+                <i class="nav-icon fas fa-star"></i>
+                <span>
+                  My collection
+                </span>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a href="/create-movie" class="nav-link">
+                <i class="nav-icon fas fa-plus-circle"></i>
+                <span>
+                  Create movie
+                </span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+
+    <div id="content" class="content-wrapper pt-3 pl-3 pr-3"></div>
+  </div>
+
+  <script>
+    window.addEventListener('route-changed', event => {
+      const [url] = event.detail;
+      const navLinkSelector = '.nav-link';
+      const menuLinks = document.querySelectorAll(navLinkSelector);
+      const currentLink = [...menuLinks].find(item => {
+        return item.getAttribute('href').includes(url);
+      });
+
+      if (currentLink) {
+        menuLinks.forEach(link => link.classList.remove('active'));
+        currentLink.classList.add('active');
+      }
+    })
+  </script>
+</body>
+
+</html>
