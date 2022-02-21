@@ -15,7 +15,7 @@ module.exports = {
   target: 'web',
   entry: {
     app: path.join(__dirname, '../src/index.js'),
-    styles: path.join(__dirname, '../src/styles/all.css')
+    styles: path.join(__dirname, '../src/styles/index.css')
   },
   output: {
     publicPath: '/',
@@ -66,10 +66,6 @@ module.exports = {
         {
           from: path.join(__dirname, '../src/assets'),
           to: "assets/[path][name][ext]",
-        },
-        {
-          from: path.join(__dirname, '../src/components/product-form/*.svg'),
-          to: "[name][ext]",
         }
       ]
     })
